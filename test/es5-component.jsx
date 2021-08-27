@@ -1,6 +1,4 @@
-var React = require('react');
-var PropTypes = require('prop-types');
-var createClass = require('create-react-class');
+var h = require('vhtml');
 
 function countTo(n) {
   var a = [];
@@ -10,23 +8,21 @@ function countTo(n) {
   return a.join(', ');
 }
 
-var Index = createClass({
-  propTypes: {
-    title: PropTypes.string,
-  },
+var Layout = props => <body>{props.children}</body>;
 
-  render: function() {
-    return (
+var Index = function(props) {
+  return (
+    <Layout>
       <div>
-        <h1>{this.props.title}</h1>
-        <p>Welcome to {this.props.title}</p>
+        <h1>{props.title}</h1>
+        <p>Welcome to {props.title}</p>
         <p>
           I can count to 10:
           {countTo(10)}
         </p>
       </div>
-    );
-  },
-});
+    </Layout>
+  );
+};
 
 module.exports = Index;
